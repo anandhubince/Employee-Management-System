@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Employee</title>
+    <link rel="stylesheet" href="{% static 'employees/style.css' %}">
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Edit Employee</h2>
+    <p>Update employee information</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name"
+               value="{{ employees.name }}" required>
+
+        <input type="number" name="age"
+               value="{{ employees.age }}" required>
+
+        <input type="email" name="email"
+               value="{{ employees.email }}" required>
+
+        <input type="text" name="phone"
+               value="{{ employees.phone }}" required>
+
+        <input type="text" name="department"
+               value="{{ employees.department }}" required>
+
+        <input type="number" name="salary"
+               value="{{ employees.salary }}" required>
+
+        <label>Joining Date</label>
+        <input type="date" name="joining_date"
+               value="{{ employees.joining_date|date:'Y-m-d' }}" required>
+
+        <button type="submit">Update Employee</button>
+    </form>
+
+    <a href="{% url 'view_employees' %}">Back to Dashboard</a>
+</div>
+
+</body>
+</html>

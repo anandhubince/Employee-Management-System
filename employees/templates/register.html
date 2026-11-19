@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="{% static 'employees/style.css' %}">
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Create Account</h2>
+    <p>Register to access the Employee Management System</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% if error %}
+            <p class="error-message">{{ error }}</p>
+        {% endif %}
+
+        <input type="text" name="username"
+               placeholder="Enter Username" required>
+
+        <input type="password" name="password"
+               placeholder="Enter Password" required>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account?
+        <a href="{% url 'login' %}">Login</a>
+    </p>
+</div>
+
+</body>
+</html>
